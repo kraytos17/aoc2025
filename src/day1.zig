@@ -1,13 +1,8 @@
 const std = @import("std");
 
 pub fn main() !void {
-    var stdout_buffer: [1024]u8 = undefined;
-    var stdout_writer = std.fs.File.stdout().writer(&stdout_buffer);
-    const stdout = &stdout_writer.interface;
-
     const result = try computePassword2("input.txt");
-    try stdout.print("{d}\n", .{result});
-    try stdout.flush();
+    std.debug.print("{d}\n", .{result});
 }
 
 pub fn computePassword1(path: []const u8) !u64 {
